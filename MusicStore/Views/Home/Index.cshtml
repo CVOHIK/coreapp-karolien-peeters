@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Domain.Album>
+
+
+@{
+    ViewData["Title"] = "Home Page - Music Store";
+}
+<style>
+    
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 20px;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+
+<br />
+
+<div class="jumbotron" style="background-color:lightblue">
+    <div class="container">
+        <div class="row well well-lg">
+            <div class="col-md-6 col-md-offset-3 centerfy">
+                <div class="">
+                    <img src="~/images/logo.png" class="img-responsive text-center" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="gallery">
+    @foreach (var item in Model)
+    {
+
+        var image = "~/content/" + item.AlbumArtUrl.ToString();
+
+        <div class="gallery-item">
+            <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                <img class="halfsize" src="@Url.Content(@image)" />
+            </a>
+            <div class="desc">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </a>
+            </div>
+        </div>
+
+    }
+
+</div>
+   
+
+
+ 

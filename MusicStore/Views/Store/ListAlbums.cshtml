@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Domain.Album>
+
+@{
+    ViewData["Title"] = "Albums";
+}
+<style>
+        .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 20px;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<h2>Albums</h2>
+
+<h4>@ViewData["Genre"] Albums</h4>
+
+
+<div class="gallery">
+    @foreach (var item in Model)
+    {
+
+        var image = "~/content/" + item.AlbumArtUrl.ToString();
+
+
+        <div class="gallery-item">
+            <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                <img class="halfsize" src="@Url.Content(@image)" />
+            </a>
+            <div class="desc">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+    }
+</div>
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+
+        var image = "~/content/" + item.AlbumArtUrl.ToString();
+            <tr>
+
+                <td>
+
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                        <img source="@Url.Content(@image)" />
+                    @Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+
+                @*<td>
+
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">Details</a>
+
+                </td>*@
+@*</tr>
+        }
+    </tbody>
+    </table>*@
