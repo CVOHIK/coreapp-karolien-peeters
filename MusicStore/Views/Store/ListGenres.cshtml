@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Domain.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h2>Genres</h2>
+<h4>Select</h4>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-controller="Store" asp-action="ListAlbums" asp-route-id="@item.GenreID">  @Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+          
+            @*<td>
+               
+                <a asp-action="Details" asp-route-id="@item.GenreID">Details</a> 
+               
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
