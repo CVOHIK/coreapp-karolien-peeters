@@ -1,0 +1,9 @@
+Tom,
+
+Ik heb de pagina om de user te registreren terug werkend gekregen.
+
+Maar dan werkte mijn admin pagina niet meer, dus ik heb de redirection van de admin page naar de login page eruit gelaten 
+en gehouden op acces denied want dat begon met alles een conflict te geven
+
+Groetjes 
+Karolien
