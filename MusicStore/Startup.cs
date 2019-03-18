@@ -44,7 +44,7 @@ namespace MusicStore
                 options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 5;
                 options.Password.RequiredUniqueChars = 0;
             });
 
@@ -61,23 +61,23 @@ namespace MusicStore
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-              //  .AddDefaultUI()
+                .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //Seting the Account Login page  
-            services.ConfigureApplicationCookie(options =>
-            {
-                // Cookie settings  
-                options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                options.LoginPath = "/Identity/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login  
-                options.LogoutPath = "/Identity/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout  
-                 options.AccessDeniedPath = "/Identity/Account/Login";  // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied  
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    // Cookie settings  
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+            //    options.LoginPath = "/Identity/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login  
+            //    options.LogoutPath = "/Identity/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout  
+            //     options.AccessDeniedPath = "/Identity/Account/Login";  // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied  
              
-                options.SlidingExpiration = true;
-            });
+            //    options.SlidingExpiration = true;
+            //});
 
         }
 
